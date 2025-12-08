@@ -204,17 +204,6 @@ python3 Bora_Arda_Avci_YouTube_AI.py "https://www.youtube.com/watch?v=rSaC-YbSDp
    - Formats each float to 10 decimal places
    - Computes MD5 hash of formatted embedding string
 
-## Dependencies
-
-- `apify-client==1.7.1` - Apify API client
-- `python-dotenv==1.0.0` - Environment variable management
-- `requests==2.31.0` - HTTP requests for LLM API
-- `tiktoken==0.5.2` - Token counting (OpenAI tokenizer)
-- `torch==2.1.2` - PyTorch for model operations
-- `transformers==4.36.2` - Hugging Face transformers library
-- `sentencepiece==0.1.99` - Tokenization support
-- `protobuf==4.25.1` - Protocol buffers support
-
 ## Error Handling
 
 The system includes comprehensive error handling:
@@ -223,45 +212,6 @@ The system includes comprehensive error handling:
 - **Missing Lyrics:** Songs that fail to scrape are skipped, processing continues
 - **Invalid JSON:** LLM responses are parsed defensively with fallback mechanisms
 - **Network Issues:** All API calls are wrapped in try-catch blocks
-
-## Troubleshooting
-
-### Common Issues
-
-**"ModuleNotFoundError: No module named 'dotenv'"**
-- Solution: Ensure virtual environment is activated
-- Run: `pip install -r requirements.txt`
-
-**"Could not extract artist name from YouTube metadata"**
-- Solution: Verify YouTube Task ID is correct in `.env`
-- Check that the task is properly configured in Apify
-
-**"Lyrics not found for: [song name]"**
-- Solution: Verify Genius Task ID is correct
-- The song name might not match exactly on Genius.com
-- Check Genius scraper configuration in Apify
-
-**"Invalid API key" or "Unauthorized"**
-- Solution: Double-check all API keys in `.env` file
-- Ensure no extra spaces or quotes around values
-- Verify API keys are still valid (not expired)
-
-**"Rate limit exceeded"**
-- Solution: Wait a few minutes before retrying
-- Free tier APIs have usage limits
-- Consider upgrading API plan if needed
-
-**Windows: "python3: command not found"**
-- Solution: Use `python` instead of `python3` on Windows
-- Or add `python3.exe` alias (copy `python.exe` → `python3.exe`)
-
-### Debug Mode
-
-To see detailed logging, the script prints progress at each step:
-- Step 1: Artist extraction
-- Step 2: Album fetching
-- Step 3: Individual song processing
-- Step 4: Embedding computation
 
 ## Performance Notes
 
@@ -276,56 +226,19 @@ To see detailed logging, the script prints progress at each step:
 - **Embedding Model Cache:** ~500-800 MB
 - **Total:** ~1-1.5 GB
 
-Cache location (Windows): `C:\Users\<YourName>\AppData\Local\huggingface\`
-
-To clean up after project completion:
-```bash
-# Delete virtual environment
-rmdir /s .venv
-
-# Delete model cache (Windows)
-# Navigate to: %LOCALAPPDATA%\huggingface
-# Delete the folder manually
-```
-
 ## Testing
 
-Test with the Madonna example from the specification:
+Test with the Rihanna example from the specification:
 
 ```bash
-python3 Bora_Arda_Avci_YouTube_AI.py "https://www.youtube.com/watch?v=rSaC-YbSDpo" json
+python3 Bora_Arda_Avci_YouTube_AI.py "https://www.youtube.com/watch?v=yd8jh9QYfEs" json
 ```
 
 **Expected Results:**
-- Artist: Madonna
-- Album: Madonna (first studio album, 1983)
-- Songs: 8 tracks including "Lucky Star", "Borderline", "Holiday", etc.
-
-## Important Notes
-
-- **API Keys Security:** Never commit your `.env` file to version control
-- **Deterministic Output:** Same input produces same output (with same APIs)
-- **Free Tier Limits:** Be mindful of API rate limits on free accounts
-- **Model Download:** First execution downloads ~500MB embedding model
-- **Cross-Platform:** Works on Windows, macOS, and Linux
-
-## Support
-
-For issues related to:
-- **Apify:** Check https://docs.apify.com/
-- **OpenRouter:** Check https://openrouter.ai/docs
-- **Transformers:** Check https://huggingface.co/docs/transformers/
-
-## License
-
-This project was created as a technical assessment for AIMultiple. The code and assessment content are proprietary to AIMultiple and should not be published or distributed.
+- Artist: Rihanna
+- Album: Music of the Sun (Released August 29, 2005)
+- Songs: 13 tracks including "Pon de Replay", "Here I Go Again", "If It's Lovin' That You Want", etc.
 
 ## Author
 
 Bora Arda Avcı
-
-## Submission
-
-Repository: [Private GitHub/Bitbucket repository]
-Invited: github@aimultiple.com
-Contact: hr@aimultiple.com, cem@aimultiple.com
