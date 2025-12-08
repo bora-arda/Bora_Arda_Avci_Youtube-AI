@@ -1,31 +1,5 @@
 # YouTube AI Scraping Agent
 
-## Project Overview
-This agent extracts artist information from YouTube, fetches their first album's songs using an LLM, scrapes lyrics from Genius.com, computes token metrics, and generates embeddings.
-
-## Setup Instructions
-
-### 1. Install Dependencies
-```bash
-# Create virtual environment
-python3 -m venv .venv
-
-# Activate virtual environment
-# On Windows:
-.venv\Scripts\activate
-# On macOS/Linux:
-source .venv/bin/activate
-
-# Install requirements
-pip install -r requirements.txt
-```
-
-### 2. Get API Keys
-
-
-
-# YouTube AI Scraping Agent
-
 ## Overview
 This agent extracts artist information from YouTube, fetches their first album's songs using an LLM, scrapes lyrics from Genius.com, computes token metrics, and generates embeddings with hash output.
 
@@ -65,7 +39,7 @@ cd <project-directory>
 ### 2. Create Virtual Environment
 ```bash
 # Create virtual environment
-python -m venv .venv
+python3 -m venv .venv
 
 # Activate it
 # On Windows:
